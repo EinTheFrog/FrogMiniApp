@@ -4,6 +4,8 @@ const fileUpload = require('express-fileupload');
 const fs = require('fs');
 
 const app = express();
+app.use(express.static("./frontend/css"));
+
 app.get("/", function(req, res) {
     fs.readFile("./frontend/index.html", function (err, data) {
         if (err) {
@@ -15,5 +17,6 @@ app.get("/", function(req, res) {
         return res.end();
     });
 });
+
 app.use(express.static("./"));
 app.listen(8080);
